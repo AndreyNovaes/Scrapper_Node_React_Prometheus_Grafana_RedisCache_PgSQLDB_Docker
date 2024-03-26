@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { getCategories, getSearch, getWebsites } from "./services/apiServices";
+import { getCategories, getSearch, getWebsites, resetCache } from "./services/apiServices";
 import FilterSection from "./SecondaryComponents/FilterSection";
 import SearchSection from "./SecondaryComponents/SearchSection";
 import ResultsSection from "./SecondaryComponents/ResultsSection";
@@ -80,7 +80,7 @@ const App = () => {
 
   const handleCategoryChange = async (value:string) => {
     setSelectedCategory(value);
-  };  
+  };
 
   return (
     <Box>

@@ -20,6 +20,18 @@ export const sendPublishMessageRequest = async (message: string) => {
   }
 };
 
+export const resetCache = async () => {
+  try {
+    const response = await apiClient.get("/resetcache");
+    console.log("Cache reset successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error resetting cache:", error);
+    throw error;
+  }
+};
+
+
 interface Product {
   id: string;
   description: string;

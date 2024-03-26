@@ -5,12 +5,14 @@ import { categoriesController } from "./dependencyWiring/categories.wiring";
 import { websitesController } from "./dependencyWiring/websites.wiring";
 import { searchController } from "./dependencyWiring/search.wiring";
 import { publishMessageController } from "./dependencyWiring/rabbitMQPublisher.wiring";
+import { cacheController } from "./dependencyWiring/cache.wiring";
 // route creators
 import { createCategoriesRouter } from "./routes/categories.route";
 import { createWebsitesRouter } from "./routes/websites.route";
 import { createSearchRouter } from "./routes/search.route";
 import { createMetricsRouter } from "./routes/metrics.route";
 import { createPublishMessageRouter } from "./routes/publishMessage.route";
+import { createCacheRouter } from "./routes/resetCache.route";
 // cors
 import cors from "cors";
 // error middleware
@@ -37,6 +39,7 @@ app.use("/search", createSearchRouter(searchController));
 app.use("/metrics", createMetricsRouter());
 app.use("/publish-message", createPublishMessageRouter(publishMessageController));
 app.use("/messages", createMessagesRouter(messageStorage));
+app.use("/resetcache", createCacheRouter(cacheController));
 
 app.use(errorMiddleware);
 
